@@ -1,0 +1,92 @@
+* { box-sizing: border-box; }
+:root {
+  --bg: #0f172a;
+  --panel: #111827;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --accent: #22c55e;
+  --accent-2: #60a5fa;
+  --danger: #ef4444;
+}
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  background: linear-gradient(180deg, #0b1220, #0f172a 40%);
+  color: var(--text);
+}
+.app-header, .app-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: rgba(17, 24, 39, 0.6);
+  backdrop-filter: blur(6px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.brand {
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  color: white;
+}
+.container {
+  max-width: 960px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+.hero { text-align: center; }
+.hero h1 {
+  margin: 0.5rem 0 0.25rem;
+  font-size: clamp(1.6rem, 2.2vw + 1rem, 2.6rem);
+}
+.subtitle { color: var(--muted); margin-top: 0; }
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.card {
+  background: linear-gradient(160deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+}
+.card.max { border-color: rgba(34, 197, 94, 0.45); }
+.card.min { border-color: rgba(96, 165, 250, 0.45); }
+.card-title { color: var(--muted); font-weight: 600; }
+.card-value { font-size: clamp(1.4rem, 2vw + 1rem, 2.2rem); font-weight: 700; margin: 0.5rem 0; }
+.card-meta { color: var(--muted); }
+
+.cik-form { display: flex; align-items: center; gap: 0.5rem; }
+.cik-form input {
+  background: #0b1220;
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  width: min(58vw, 420px);
+}
+.cik-form button {
+  background: var(--accent);
+  color: #051b0d;
+  border: none;
+  padding: 0.55rem 0.9rem;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.cik-form button:hover { filter: brightness(1.05); }
+.status { color: var(--muted); margin-top: 0.5rem; }
+
+.app-footer { justify-content: center; color: var(--muted); position: static; margin-top: 3rem; }
+
+.visually-hidden {
+  position: absolute !important;
+  height: 1px; width: 1px; overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px); white-space: nowrap;
+}
