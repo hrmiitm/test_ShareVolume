@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="ShareVolume — Visualize the highest and lowest common stock shares outstanding for a public company from SEC XBRL data." />
+  <title>ShareVolume — Loading…</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 id="share-entity-name" title="Entity Name">Loading…</h1>
+      <p class="subtitle">Common Stock Shares Outstanding (XBRL)</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card-grid" aria-labelledby="stats-heading">
+      <h2 id="stats-heading" class="sr-only">Statistics</h2>
+
+      <article class="card highlight">
+        <h3>Maximum</h3>
+        <p class="value"><span id="share-max-value">—</span> shares</p>
+        <p class="meta">Fiscal year: <strong id="share-max-fy">—</strong></p>
+      </article>
+
+      <article class="card">
+        <h3>Minimum</h3>
+        <p class="value"><span id="share-min-value">—</span> shares</p>
+        <p class="meta">Fiscal year: <strong id="share-min-fy">—</strong></p>
+      </article>
+    </section>
+
+    <section class="tools" aria-labelledby="tools-heading">
+      <h2 id="tools-heading">Try another company</h2>
+      <form id="cik-form" class="cik-form" autocomplete="off">
+        <label for="cik-input">Enter a 10-digit CIK</label>
+        <div class="row">
+          <input id="cik-input" name="CIK" inputmode="numeric" pattern="\d{10}" maxlength="10" placeholder="e.g. 0001018724" aria-describedby="cik-help" />
+          <button type="submit" class="btn">Load</button>
+        </div>
+        <small id="cik-help">Example: 0001018724 (Amazon). Page updates without reload. A CORS proxy is used for browser access.</small>
+      </form>
+      <p id="status" role="status" aria-live="polite" class="status"></p>
+    </section>
+
+    <section class="notes">
+      <details>
+        <summary>About this data</summary>
+        <p>
+          Figures are parsed from the SEC XBRL company concept endpoint
+          for <code>dei:EntityCommonStockSharesOutstanding</code>. We filter for
+          numeric values with fiscal years strictly greater than 2020, then show
+          the highest and lowest values observed.
+        </p>
+        <p>
+          By default, the page renders from the bundled data.json (Biogen). If a
+          <code>?CIK=</code> query parameter is present, the app fetches the live SEC API via a
+          CORS-friendly proxy and updates the page dynamically.
+        </p>
+      </details>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>
+        Built for GitHub Pages. Data courtesy of the U.S. SEC. This is a
+        community demo and not investment advice.
+      </p>
+    </div>
+  </footer>
+
+  <script src="assets/app.js" defer></script>
+  <noscript>
+    JavaScript is required to fetch and display the SEC data.
+  </noscript>
+</body>
+</html>
